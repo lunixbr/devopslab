@@ -1,3 +1,4 @@
+# Versão 1.0
 #print("Hello World")
 
 from flask import Flask
@@ -10,3 +11,4 @@ def pagina_inicial():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
