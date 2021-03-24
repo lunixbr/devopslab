@@ -1,5 +1,7 @@
 # DevOpsLab
 
+[![Build Status](https://travis-ci.com/lunixbr/devopslab.svg?branch=main)](https://travis-ci.com/lunixbr/devopslab)
+
 ## Laboratório DevOps
 
 * Repositório da disciplina de DevOpsTools - Faculdade Mackenzie  - Pós DevOps
