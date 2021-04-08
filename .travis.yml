@@ -17,7 +17,7 @@ install:
 #Integração Sonar
 addons:
   sonarcloud:
-    organization: lunixbr-github
+    organization: lunixbr
     token: $SONAR_TOKEN
     
 # Defini o script de Teste que deve rodar toda vez que o código for alterado. 
