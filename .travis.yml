@@ -26,6 +26,7 @@ addons:
 #  - sonar-scanner || travis_terminate 1;  
 #
 script:                                                                                                                                           
+  - coverage run test.py || travis_terminate 1;
   - coverage report app.py || travis_terminate 1;
   - coverage xml app.py || travis_terminate 1;
   - sonar-scanner || travis_terminate 1;
@@ -37,4 +38,4 @@ deploy:
   edge: true 
   app: devopslab-luizpaulo
   on:
-      branch: main
+  branch: main
