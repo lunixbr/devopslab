@@ -1,4 +1,3 @@
-# Versão 2.0
 #print("Hello World")
 
 from flask import Flask
