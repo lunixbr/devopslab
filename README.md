@@ -1,6 +1,8 @@
 # DevOpsLab
 
 [![Build Status](https://travis-ci.com/lunixbr/devopslab.svg?branch=main)](https://travis-ci.com/lunixbr/devopslab)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=lunixbr_devopslab&metric=alert_status)](https://sonarcloud.io/dashboard?id=lunixbr_devopslab)
+
 
 ## Laboratório DevOps
 
