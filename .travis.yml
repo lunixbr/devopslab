@@ -11,7 +11,7 @@ python:
   - "3.7.9"
 jobs:
   include:
-    - stage: Testes
+    - stage: Testing
       name: "Testes Unitarios"
       # Instalação de Módulos que são necessários para a Aplicação.                                                                                                                                            
       install:                                                                                                                                                                                                 
@@ -32,7 +32,7 @@ jobs:
           organization: lunixbr
           token: $SONAR_TOKEN
 #
-    - stage: Deploy
+    - stage: Deployment
       script: skip      
       # Definir o Deploy no Heroku
       deploy:
@@ -43,7 +43,7 @@ jobs:
         on:
         branch: main
 #        
-    - stage: Notificação
+    - stage: Notification
       script: skip
       # Travis to Slack
       notifications:
