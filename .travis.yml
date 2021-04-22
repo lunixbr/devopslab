@@ -1,18 +1,16 @@
 # Linguagem Utilizada para Desenvolver a Aplicação                                                                                                                                                       
 language: python 
-
 os: 
   - linux
 dist: xenial
 deploy: api
-
 # Versão python para aplicação suporta.
 python:
   - "3.7.9"
 jobs:
   include:
     - stage: Testing
-      name: "Testes Unitarios"
+      name: "Unity Testing"
       # Instalação de Módulos que são necessários para a Aplicação.                                                                                                                                            
       install:                                                                                                                                                                                                 
       - pip install flask flask-wtf coverage
@@ -20,17 +18,28 @@ jobs:
       #  - python -m unittest -v test || travis_terminate 1;
       #  - sonar-scanner || travis_terminate 1;  
       #
-      #Add Integração Sonar
-      addons:
-        sonarcloud:
-          organization: lunixbr
-          token: $SONAR_TOKEN
       # Defini o script de Teste que deve rodar toda vez que o código for alterado.   
       script:                                                                                                                                           
         - coverage run test.py || travis_terminate 1;
         - coverage report app.py || travis_terminate 1;
         - coverage xml app.py || travis_terminate 1;
+      workspaces:
+        create:
+          name: coverage
+          paths:
+            - coverage.xml
+#
+      #Add Integração Sonar
+    - stage: Quality
+      name: "Quality Security"
+      addons:
+        sonarcloud:
+          organization: lunixbr
+          token: $SONAR_TOKEN
+      script:
         - sonar-scanner || travis_terminate 1;
+      workspaces:
+        use: coverage
 #
     - stage: Deployment
       script: skip      
