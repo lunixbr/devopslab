@@ -5,7 +5,7 @@ os:
   - linux
 dist: xenial
 deploy: api
-                                                                                                                                                                                                                                                                                                                                                                 
+
 # Versão python para aplicação suporta.
 python:
   - "3.7.9"
@@ -32,7 +32,7 @@ jobs:
           organization: lunixbr
           token: $SONAR_TOKEN
 #
-  - stage: Deploy
+    - stage: Deploy
       script: skip      
       # Definir o Deploy no Heroku
       deploy:
@@ -43,7 +43,7 @@ jobs:
         on:
         branch: main
 #        
-  - stage: Notificação
+    - stage: Notificação
       script: skip
       # Travis to Slack
       notifications:
