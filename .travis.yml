@@ -16,21 +16,21 @@ jobs:
       # Instalação de Módulos que são necessários para a Aplicação.                                                                                                                                            
       install:                                                                                                                                                                                                 
       - pip install flask flask-wtf coverage
-      # Defini o script de Teste que deve rodar toda vez que o código for alterado.   
       #script:
       #  - python -m unittest -v test || travis_terminate 1;
       #  - sonar-scanner || travis_terminate 1;  
       #
+      #Add Integração Sonar
+      addons:
+        sonarcloud:
+          organization: lunixbr
+          token: $SONAR_TOKEN
+      # Defini o script de Teste que deve rodar toda vez que o código for alterado.   
       script:                                                                                                                                           
         - coverage run test.py || travis_terminate 1;
         - coverage report app.py || travis_terminate 1;
         - coverage xml app.py || travis_terminate 1;
         - sonar-scanner || travis_terminate 1;
-      #Integração Sonar
-      addons:
-        sonarcloud:
-          organization: lunixbr
-          token: $SONAR_TOKEN
 #
     - stage: Deployment
       script: skip      
