@@ -39,3 +39,10 @@ deploy:
   app: devopslab-luizpaulo
   on:
   branch: main
+  
+# Travis to Slack
+notifications:
+  slack:
+    secure: 2heeQqpA+r8VAB0PRoC4vlXGpf83ijT9b0qQ99S6L48lCr9rkP3lPiN52fYotKP2x+OdP8CkzBa9tpUSGAp+iPEICyTFXTvAqdWpwIe6KMn6fhZncDvCKuprKBkLGUUO390XP7uqIt4CVczPmM4osvzfuk6C1R7BAC7U49cjpIjmOPUwJZQrH8qIe4lk92+zcltlElpGWFE6fBTuqgr7ND+J7R8d+Bqzq16ggtqC6Su6UD1X9aODZEamu4r52aPgtXRwfGOylRKAg6YayFtf+U3awAt1Drig6/crD9RmuAYcXOJ26ESqvu5jcVyPuPa83bT3eHaL+yTO1hsxHdCGli6VtdtKTXB4IV7UuqeW+F+SknTRS/wsMVE3qedHq5vJAJ+VyxL85chzhE9jO8S25nbuXVXTzWmyWIZeCS58K8ZZdvsoWvyZwAyU7dbjepAC827tX2oQ5B6aal0cykApg5Fok0REWsmlZ9Apa+5IaINKAR8rSLrUwpb6h91ytT9OEZ8ZqH0p/JsY5kQJIZvrbhVd42y1d/oZmZvEXebUuPju+8aE5A1a+M7YRkfEHt7qd9HBOlJcJ1aRmZiPzxdV+wHMn/4SZWmfDB/D90JXvP4R1iQiIFLChM2fNbD3ukfKdzZEAtXjg+UiV05uu1O1yq/9dsRF+QXI1YJbt84g0oo=
+    on_success: always
+    on_failure: always
