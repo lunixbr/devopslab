@@ -41,7 +41,29 @@ jobs:
       workspaces:
         use: coverage
 #
-    - stage: Deployment
+    - stage: Deployment-STG
+      script: skip      
+      # Definir o Deploy no Heroku
+      deploy:
+        provider: heroku
+        api_key: $HEROKU_API_KEY
+        edge: true 
+        app: devopslab-stg-luizpaulo
+        on:
+        branch: main
+    - stage: Deployment-STG-Testing
+      script:
+        - curl https://devopslab-stg-luizpaulo.herokuapp.com/ | grep Pipeline || travis_terminate 1;
+#
+#        
+# Travis to Slack - STG
+notifications:
+  slack:
+    secure: FyBBmcPieAcv/IHMLbkLZUKmVpFwp7jFTgm2lmxFQ+pP9aJwiazbazCyqSldE02/jP4rEeBaSyUjxr/SXCINn8k3EmJI/eqTT9agjv+K07TPlxVkI+Sove3cGfvShSh2ucS3zJIHQhSJ4AmADtznxg6Wna2EHI+iZdT52Bj2K0ca2D6qSExdETUGhQcxM4/KZ2gZvoQu23lISug91snzfMAIgYGuhzHPV5ZNC7GJz4P00mE/Zja3HFEVATMDvAps7Yb8cXCL4ZEn8qWz6xd4pDX+tBZq7fRcRivqJ1iXG/jhNHf1Zhla3EyhmScTuBc6Ci92btxEeujMuYdBG4C8TXue0z7F6M4UU8HhJe96kyA0GoxrUt3mn6PB4xkGJm0/Ooo5aI8Dp4scBCknQ3fJ6+zlOIxZ3q2CDIv1J4pKqMNgp6HshDal7FUlohfOpAc/EQX5GD0UxaG5pXVRA79KZgk8GmH8H43gUzO+MUDQjLngxhXynzzM+B1bEcyXKLayH/jL6oWKSYo4uLHdU9pyihuqDKWXDKvTHogIBNTCZn42pwRNc07eTdjEVFF6qFNb42JWjYQlf3XcID5aEjLssgN3AmyP7MgzaPm01+Y5FelxO/+6zLc/Hm7AcPnAKw1Uv411kgb2u5WErMFiiuri+9+NKuCMyVkWPanINosBuAg=
+    on_success: always
+    on_failure: always
+#
+    - stage: Deployment-PRD
       script: skip      
       # Definir o Deploy no Heroku
       deploy:
@@ -51,8 +73,12 @@ jobs:
         app: devopslab-luizpaulo
         on:
         branch: main
+    - stage: Deployment-Testing
+      script:
+        - curl https://devopslab-luizpaulo.herokuapp.com/ | grep Pipeline || travis_terminate 1;
+
 #        
-# Travis to Slack
+# Travis to Slack - PRD
 notifications:
   slack:
     secure: FyBBmcPieAcv/IHMLbkLZUKmVpFwp7jFTgm2lmxFQ+pP9aJwiazbazCyqSldE02/jP4rEeBaSyUjxr/SXCINn8k3EmJI/eqTT9agjv+K07TPlxVkI+Sove3cGfvShSh2ucS3zJIHQhSJ4AmADtznxg6Wna2EHI+iZdT52Bj2K0ca2D6qSExdETUGhQcxM4/KZ2gZvoQu23lISug91snzfMAIgYGuhzHPV5ZNC7GJz4P00mE/Zja3HFEVATMDvAps7Yb8cXCL4ZEn8qWz6xd4pDX+tBZq7fRcRivqJ1iXG/jhNHf1Zhla3EyhmScTuBc6Ci92btxEeujMuYdBG4C8TXue0z7F6M4UU8HhJe96kyA0GoxrUt3mn6PB4xkGJm0/Ooo5aI8Dp4scBCknQ3fJ6+zlOIxZ3q2CDIv1J4pKqMNgp6HshDal7FUlohfOpAc/EQX5GD0UxaG5pXVRA79KZgk8GmH8H43gUzO+MUDQjLngxhXynzzM+B1bEcyXKLayH/jL6oWKSYo4uLHdU9pyihuqDKWXDKvTHogIBNTCZn42pwRNc07eTdjEVFF6qFNb42JWjYQlf3XcID5aEjLssgN3AmyP7MgzaPm01+Y5FelxO/+6zLc/Hm7AcPnAKw1Uv411kgb2u5WErMFiiuri+9+NKuCMyVkWPanINosBuAg=
